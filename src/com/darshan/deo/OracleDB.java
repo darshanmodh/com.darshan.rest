@@ -2,6 +2,7 @@ package com.darshan.deo;
 
 import javax.naming.*;
 import javax.sql.*;
+import java.sql.Connection;
 
 public class OracleDB {
 	
@@ -21,8 +22,19 @@ public class OracleDB {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		
 		return oracleDB;
 	}
+	
+	protected static Connection oraclePCPartsConnection() {
+		Connection conn = null;
+		try {
+			conn = oracleDBConn().getConnection();
+			return conn;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return conn;
+	}	//end of protected method
 
 }
