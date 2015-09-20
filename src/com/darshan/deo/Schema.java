@@ -110,4 +110,52 @@ public class Schema extends OracleDB {
 		return json;
 	}
 
+
+	public int updatePCParts(int pk, int avail) throws Exception {
+		// TODO Auto-generated method stub
+		PreparedStatement query = null;
+		Connection conn = null;
+		try {
+			conn = oracleDBConn().getConnection();
+			query = conn.prepareStatement("update PC_PARTS " + 
+					"set PC_PARTS_AVAIL = ? " +
+					"where PC_PARTS_PK = ? ");
+			query.setInt(1, pk);
+			query.setInt(2, avail);
+			query.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return 500;
+		} finally {
+			if (conn != null)
+				conn.close(); 
+		}
+		return 200;
+	}
+
+
+	public int deletePCPart(int pk) throws Exception {
+		// TODO Auto-generated method stub
+		PreparedStatement query = null;
+		Connection conn = null;
+		try {
+			conn = oracleDBConn().getConnection();
+			query = conn.prepareStatement("delete from PC_PARTS " + 
+					"where PC_PARTS_PK = ? ");
+			query.setInt(1, pk);
+			query.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return 500;
+		} finally {
+			if (conn != null)
+				conn.close(); 
+		}
+		return 200;
+	}
+
 }

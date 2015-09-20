@@ -50,7 +50,7 @@ function updateInventory(obj, maker, code) {
 	
 	ajaxObj = {  
 			type: "PUT",
-			url: "http://localhost:7001/com.darshan.rest/api/v2/inventory/" + maker + "/" + code,
+			url: "http://localhost:7001/com.darshan.rest/api/v3/inventory/" + maker + "/" + code,
 			data: JSON.stringify(obj), 
 			contentType:"application/json",
 			error: function(jqXHR, textStatus, errorThrown) {
